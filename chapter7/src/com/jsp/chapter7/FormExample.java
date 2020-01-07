@@ -1,30 +1,30 @@
-package com.jsp.ex2;
+package com.jsp.chapter7;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PostMethod
+ * Servlet implementation class FormExample
  */
-@WebServlet("/PMethod")
-public class PostMethod extends HttpServlet {
+@WebServlet("/FormEx")
+public class FormExample extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostMethod() {
+    public FormExample() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,14 +40,30 @@ public class PostMethod extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("doPost");
 		
-		response.setContentType("text/html; charset=euc-kr");
+		request.setCharacterEncoding("EUC-KR");
+		
+		String name = request.getParameter("name");
+		String id = request.getParameter("id");
+		String pass = request.getParameter("password");
+		
+		String[] hobbys = request.getParameterValues("hobby");
+		String major = request.getParameter("major");
+		String protocol = request.getParameter("protocol");
+				
+		response.setContentType("text/html; charset=EUC-KR");
 		PrintWriter writer = response.getWriter();
 		
 		writer.println("<html>");
 		writer.println("<head>");
 		writer.println("</head>");
 		writer.println("<body>");
-		writer.println("<h1>doPost 입니다.</h1>");
+		writer.println("이름 : " + name + "</br>");
+		writer.println("아이디 : " + id + "</br>");
+		writer.println("비밀번호 : " + pass + "</br>");
+		writer.println("취미 : " + Arrays.toString(hobbys) + "</br>");
+		writer.println("전공 : " + major + "</br>");
+		writer.println("프로토콜 : " + protocol + "</br>");
+		//writer.println(Arrays.toString(names));
 		writer.println("</body>");
 		writer.println("</html>");
 		

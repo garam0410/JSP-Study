@@ -71,7 +71,7 @@ public class ModifyOk extends HttpServlet {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:121:xe", "scott", "tiger");
+				connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 				statement = connection.createStatement();
 				
 				int i = statement.executeUpdate(query);
